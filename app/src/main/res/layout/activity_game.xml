@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity_Game">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/space_IMG_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:background="#09B626" />
+
+<!--this is for the entire screen layout -->
+    <androidx.appcompat.widget.LinearLayoutCompat
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+
+        >
+
+        <!--this layout is for the hearts -->
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/game_LYO_hearts"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            android:layout_weight="1"
+
+
+            >
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="140dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="16dp"
+
+                android:orientation="horizontal">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/game_IMG_heart1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/ic_heart"
+                    android:scaleType="fitCenter"/>
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/game_IMG_heart2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    app:srcCompat="@drawable/ic_heart"
+                    android:scaleType="fitCenter"/>
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/game_IMG_heart3"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    app:srcCompat="@drawable/ic_heart"
+                    android:scaleType="fitCenter"/>
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/game_IMG_heart4"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    app:srcCompat="@drawable/ic_heart"
+                    android:scaleType="fitCenter"/>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <!--this layout is for for game itself (will have many horizontals into it) -->
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/game_LYO_thegame"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:layout_weight="7"
+
+            >
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                >
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/game_IMG_ast00"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    app:srcCompat="@drawable/asteroid"
+                    android:scaleType="fitCenter"/>
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/game_IMG_ast01"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    app:srcCompat="@drawable/asteroid"
+                    android:scaleType="fitCenter"/>
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/game_IMG_ast02"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    app:srcCompat="@drawable/asteroid"
+                    android:scaleType="fitCenter"/>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                >
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/game_IMG_ast10"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    app:srcCompat="@drawable/asteroid"
+                    android:scaleType="fitCenter"/>
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/game_IMG_ast11"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    app:srcCompat="@drawable/asteroid"
+                    android:scaleType="fitCenter"/>
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/game_IMG_ast12"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    app:srcCompat="@drawable/asteroid"
+                    android:scaleType="fitCenter"/>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                >
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/game_IMG_ast20"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    app:srcCompat="@drawable/asteroid"
+                    android:scaleType="fitCenter"/>
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/game_IMG_ast21"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    app:srcCompat="@drawable/asteroid"
+                    android:scaleType="fitCenter"/>
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/game_IMG_ast22"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    app:srcCompat="@drawable/asteroid"
+                    android:scaleType="fitCenter"/>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                >
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/game_IMG_ast30"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    app:srcCompat="@drawable/asteroid"
+                    android:scaleType="fitCenter"/>
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/game_IMG_ast31"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    app:srcCompat="@drawable/asteroid"
+                    android:scaleType="fitCenter"/>
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/game_IMG_ast32"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    app:srcCompat="@drawable/asteroid"
+                    android:scaleType="fitCenter"/>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                >
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/game_IMG_ast40"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    app:srcCompat="@drawable/asteroid"
+                    android:scaleType="fitCenter"/>
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/game_IMG_ast41"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    app:srcCompat="@drawable/asteroid"
+                    android:scaleType="fitCenter"/>
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/game_IMG_ast42"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    app:srcCompat="@drawable/asteroid"
+                    android:scaleType="fitCenter"/>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                >
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/game_IMG_ast50"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    app:srcCompat="@drawable/asteroid"
+                    android:scaleType="fitCenter"/>
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/game_IMG_ast51"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    app:srcCompat="@drawable/asteroid"
+                    android:scaleType="fitCenter"/>
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/game_IMG_ast52"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    app:srcCompat="@drawable/asteroid"
+                    android:scaleType="fitCenter"/>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                >
+
+                <FrameLayout
+                    android:id="@+id/game_LYO_astabovespace0"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent" >
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/game_IMG_spaceship60"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/spaceship_svgrepo_com" />
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/game_IMG_ast60"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/asteroid"/>
+                </FrameLayout>
+
+                <FrameLayout
+                    android:id="@+id/game_LYO_astabovespace1"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent" >
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/game_IMG_spaceship61"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/spaceship_svgrepo_com" />
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/game_IMG_ast61"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/asteroid"/>
+                </FrameLayout>
+
+                <FrameLayout
+                    android:id="@+id/game_LYO_astabovespace2"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent" >
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/game_IMG_spaceship62"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/spaceship_svgrepo_com" />
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/game_IMG_ast62"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/asteroid"/>
+                </FrameLayout>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <!--this is for the floating buttons -->
+        <RelativeLayout
+            android:id="@+id/game_LYO_btns"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            android:layout_weight="1"
+
+
+            >
+
+            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+                android:id="@+id/game_FAB_left"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                app:iconTint="@color/white"
+                app:icon="@drawable/ic_left">
+
+            </com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton>
+
+            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+                android:id="@+id/game_FAB_right"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="16dp"
+
+
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                app:iconTint="@color/white"
+                app:icon="@drawable/ic_right">
+
+            </com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton>
+        </RelativeLayout>
+
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</RelativeLayout>
