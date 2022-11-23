@@ -49,8 +49,6 @@ public class Activity_Game extends AppCompatActivity {
 
         startGame(); //THIS METHOD WILL MAKE EVERYTHING INVISIBLE AND POSITION SPACESHIP AT THE START, AND WILL START TIMING THE METEORS AND SHIT
 
-    //    refreshUI();
-
 
     }
 
@@ -58,7 +56,7 @@ public class Activity_Game extends AppCompatActivity {
         turnAllInvisible();
         int col = gameManager.pickARandomRockForStart();
         game_IMG_matrix[0][col].setVisibility(View.VISIBLE);
-        //int i = 0;
+
 
         // POSITION SPACESHIP AT THE START
         game_IMG_space[0].setVisibility(View.INVISIBLE);
@@ -142,14 +140,12 @@ public class Activity_Game extends AppCompatActivity {
         for (int i = 0; i < NUM_ROWS; i++) {
             for (int j = 0; j < NUM_COLS; j++) {
                 game_IMG_matrix[i][j] = findViewById(imgIdsAst[i][j]);
-//                game_IMG_matrix[i][j] = new ShapeableImageView(this);
-                //               game_IMG_matrix[i][j].setImageResource(R.drawable.asteroid);
+
             }
         }
         for (int j = 0; j < NUM_COLS; j++) {
             game_IMG_matrix[NUM_ROWS - 1][j] = findViewById(imgIdsAst[NUM_ROWS - 1][j]);
-//            game_IMG_matrix[NUM_ROWS-1][j] = new ShapeableImageView(this);
-            //           game_IMG_matrix[NUM_ROWS-1][j].setImageResource(R.drawable.spaceship_svgrepo_com);
+
         }
         game_FAB_left = findViewById(R.id.game_FAB_left);
         game_FAB_right = findViewById(R.id.game_FAB_right);

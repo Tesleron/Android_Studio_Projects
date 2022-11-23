@@ -7,15 +7,12 @@ import com.google.android.material.imageview.ShapeableImageView;
 
 public class GameManager {
 
-//    private final int NUM_ROWS = 7;
-//    private final int NUM_COLS = 3;
     private SpaceShip ship;
 
 
     private int life;
     private int hits = 0;
-    //private static int line = 0;
-//    private ShapeableImageView[][] game_IMG_matrix;
+
 
     public GameManager(int life) {
         this.life = life;
