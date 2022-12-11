@@ -69,65 +69,11 @@ public class GameManager {
 
     public void moveShip(int move, ShapeableImageView[] game_IMG_space) { // THIS FUNCTION MOVES THE SPACESHIP RIGHT/LEFT DEPENDS ON THE RESULT AND SETS THE IMG VISIBILITY ACCORDINGLY
         int result = ship.getCurrentPos() + move;
-        if (result >=0 && result < Activity_Game.NUM_COLS)
+        if (result >= 0 && result < Activity_Game.NUM_COLS)
         {
+            game_IMG_space[ship.getCurrentPos()].setVisibility(View.INVISIBLE);
             ship.setCurrentPos(result);
-            switch(result)
-            {
-                case 0:
-                {
-                    game_IMG_space[0].setVisibility(View.VISIBLE);
-                    game_IMG_space[1].setVisibility(View.INVISIBLE);
-                    game_IMG_space[2].setVisibility(View.INVISIBLE);
-                    game_IMG_space[3].setVisibility(View.INVISIBLE);
-                    game_IMG_space[4].setVisibility(View.INVISIBLE);
-                }
-                break;
-
-                case 1:
-                {
-                    game_IMG_space[0].setVisibility(View.INVISIBLE);
-                    game_IMG_space[1].setVisibility(View.VISIBLE);
-                    game_IMG_space[2].setVisibility(View.INVISIBLE);
-                    game_IMG_space[3].setVisibility(View.INVISIBLE);
-                    game_IMG_space[4].setVisibility(View.INVISIBLE);
-
-                }
-                break;
-
-                case 2:
-                {
-                    game_IMG_space[0].setVisibility(View.INVISIBLE);
-                    game_IMG_space[1].setVisibility(View.INVISIBLE);
-                    game_IMG_space[2].setVisibility(View.VISIBLE);
-                    game_IMG_space[3].setVisibility(View.INVISIBLE);
-                    game_IMG_space[4].setVisibility(View.INVISIBLE);
-                }
-                break;
-
-                case 3:
-                {
-                    game_IMG_space[0].setVisibility(View.INVISIBLE);
-                    game_IMG_space[1].setVisibility(View.INVISIBLE);
-                    game_IMG_space[2].setVisibility(View.INVISIBLE);
-                    game_IMG_space[3].setVisibility(View.VISIBLE);
-                    game_IMG_space[4].setVisibility(View.INVISIBLE);
-                }
-                break;
-
-                case 4:
-                {
-                    game_IMG_space[0].setVisibility(View.INVISIBLE);
-                    game_IMG_space[1].setVisibility(View.INVISIBLE);
-                    game_IMG_space[2].setVisibility(View.INVISIBLE);
-                    game_IMG_space[3].setVisibility(View.INVISIBLE);
-                    game_IMG_space[4].setVisibility(View.VISIBLE);
-                }
-                break;
-
-                default:
-                    break;
-            }
+            game_IMG_space[ship.getCurrentPos()].setVisibility(View.VISIBLE);
         }
         else
             return;
