@@ -1,34 +1,58 @@
 package com.example.targil_bait_1;
 
-import android.graphics.drawable.shapes.Shape;
+import android.content.Context;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.android.material.imageview.ShapeableImageView;
+
+import java.util.Random;
 
 public class GameManager {
 
     private SpaceShip ship;
 
-
     private int life;
     private int hits = 0;
+    private int delay;
+    Random rand;
+    Context context;
 
-
-    public GameManager(int life) {
+    public GameManager(int life, Context context) {
         this.life = life;
         ship = new SpaceShip();
+        rand = new Random();
+        this.context = context;
     }
 
     public int getHits() {
         return hits;
     }
 
-    public boolean gotHit(ShapeableImageView[] game_img_space, ShapeableImageView[][] game_img_matrix) { // THIS FUNCTION CHECKS IF AN ASTEROID AND A SPACESHIP ARE VISIBLE ON THE SAME SQUARE
+    public int gotHit(ShapeableImageView[] game_img_space, ShapeableImageView[][] game_img_matrix, final int astID, final int coinID) { // THIS FUNCTION CHECKS IF AN ASTEROID AND A SPACESHIP ARE VISIBLE ON THE SAME SQUARE
         int position = ship.getCurrentPos();
-        boolean isHitted = (game_img_space[position].getVisibility() == View.VISIBLE && game_img_matrix[Activity_Game.NUM_ROWS-1][position].getVisibility() == View.VISIBLE);
-        if (isHitted)
-            hits++;
-        return isHitted;
+        Integer tag = (Integer)game_img_matrix[Activity_Game.NUM_ROWS-1][position].getTag();
+        if (tag != null)
+        {
+            if (tag.intValue() == astID)
+            {
+                boolean isHitted = (game_img_space[position].getVisibility() == View.VISIBLE && game_img_matrix[Activity_Game.NUM_ROWS-1][position].getVisibility() == View.VISIBLE);
+                if (isHitted)
+                {
+                    hits++;
+                    return 1;
+                }
+            }
+            else if (tag.intValue() == coinID)
+            {
+                boolean isHitted = (game_img_space[position].getVisibility() == View.VISIBLE && game_img_matrix[Activity_Game.NUM_ROWS-1][position].getVisibility() == View.VISIBLE);
+                if (isHitted)
+                {
+                    return 2;
+                }
+            }
+        }
+        return 0;
     }
 
     public boolean isEndGame() {
@@ -55,6 +79,8 @@ public class GameManager {
                     game_IMG_space[0].setVisibility(View.VISIBLE);
                     game_IMG_space[1].setVisibility(View.INVISIBLE);
                     game_IMG_space[2].setVisibility(View.INVISIBLE);
+                    game_IMG_space[3].setVisibility(View.INVISIBLE);
+                    game_IMG_space[4].setVisibility(View.INVISIBLE);
                 }
                 break;
 
@@ -63,6 +89,9 @@ public class GameManager {
                     game_IMG_space[0].setVisibility(View.INVISIBLE);
                     game_IMG_space[1].setVisibility(View.VISIBLE);
                     game_IMG_space[2].setVisibility(View.INVISIBLE);
+                    game_IMG_space[3].setVisibility(View.INVISIBLE);
+                    game_IMG_space[4].setVisibility(View.INVISIBLE);
+
                 }
                 break;
 
@@ -71,6 +100,28 @@ public class GameManager {
                     game_IMG_space[0].setVisibility(View.INVISIBLE);
                     game_IMG_space[1].setVisibility(View.INVISIBLE);
                     game_IMG_space[2].setVisibility(View.VISIBLE);
+                    game_IMG_space[3].setVisibility(View.INVISIBLE);
+                    game_IMG_space[4].setVisibility(View.INVISIBLE);
+                }
+                break;
+
+                case 3:
+                {
+                    game_IMG_space[0].setVisibility(View.INVISIBLE);
+                    game_IMG_space[1].setVisibility(View.INVISIBLE);
+                    game_IMG_space[2].setVisibility(View.INVISIBLE);
+                    game_IMG_space[3].setVisibility(View.VISIBLE);
+                    game_IMG_space[4].setVisibility(View.INVISIBLE);
+                }
+                break;
+
+                case 4:
+                {
+                    game_IMG_space[0].setVisibility(View.INVISIBLE);
+                    game_IMG_space[1].setVisibility(View.INVISIBLE);
+                    game_IMG_space[2].setVisibility(View.INVISIBLE);
+                    game_IMG_space[3].setVisibility(View.INVISIBLE);
+                    game_IMG_space[4].setVisibility(View.VISIBLE);
                 }
                 break;
 
@@ -86,7 +137,15 @@ public class GameManager {
         return (int)(Math.random() * (Activity_Game.NUM_COLS));
     }
 
-    public void moveVisibleAsteroids(ShapeableImageView[][] game_img_matrix, ShapeableImageView[] game_img_space) {
+    public int randTypeImage() {
+        int res = rand.nextInt(5);
+        if( res > 3){
+            return 1;//return viewType gold
+        }
+        return 0;//return viewType rock
+    }
+
+    public void moveVisibleAsteroids(ShapeableImageView[][] game_img_matrix, int coinID, int astID) {
         //gotHit(game_img_matrix);
         for (int i = Activity_Game.NUM_ROWS-1; i >= 0; i--)
         {
@@ -99,6 +158,20 @@ public class GameManager {
                 }
                 if (game_img_matrix[i][j].getVisibility() == View.VISIBLE) // IF AN ASTEROID IS CURRENTLY ACTIVE, MOVE IT DOWN
                 {
+                    Integer tag = (Integer)game_img_matrix[i][j].getTag();
+                    if (tag != null)
+                    {
+                        if (tag.intValue() == coinID)
+                        {
+                           game_img_matrix[i + 1][j].setImageResource(coinID);
+                           game_img_matrix[i + 1][j].setTag(coinID);
+                        }
+                        else
+                        {
+                            game_img_matrix[i + 1][j].setImageResource(astID);
+                            game_img_matrix[i + 1][j].setTag(astID);
+                        }
+                    }
                     game_img_matrix[i][j].setVisibility(View.INVISIBLE);
                     game_img_matrix[i + 1][j].setVisibility(View.VISIBLE);
                 }
@@ -107,6 +180,18 @@ public class GameManager {
     }
 
 
+    public int getDelay() {
+        return delay;
+    }
 
+    public void setDelay(int delay) {
+        this.delay = delay;
+    }
 
+    public void displayToast(String text, int length)
+    {
+        Toast
+                .makeText(context, text, length)
+                .show();
+    }
 }

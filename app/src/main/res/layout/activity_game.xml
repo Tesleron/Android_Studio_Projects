@@ -14,6 +14,18 @@
         android:scaleType="centerCrop"
         android:background="#09B626" />
 
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/game_LBL_score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="000"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:textColor="#F1EEEE"
+        android:layout_alignParentEnd="true"
+        >
+    </com.google.android.material.textview.MaterialTextView>
+
 <!--this is for the entire screen layout -->
     <androidx.appcompat.widget.LinearLayoutCompat
 
@@ -75,8 +87,9 @@
                     android:layout_marginStart="8dp"
                     app:srcCompat="@drawable/ic_heart"
                     android:scaleType="fitCenter"/>
-
             </androidx.appcompat.widget.LinearLayoutCompat>
+
+
         </androidx.appcompat.widget.LinearLayoutCompat>
 
         <!--this layout is for for game itself (will have many horizontals into it) -->
@@ -123,6 +136,24 @@
                     app:srcCompat="@drawable/asteroid"
                     android:scaleType="fitCenter"/>
 
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/game_IMG_ast03"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    app:srcCompat="@drawable/asteroid"
+                    android:scaleType="fitCenter"/>
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/game_IMG_ast04"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    app:srcCompat="@drawable/asteroid"
+                    android:scaleType="fitCenter"/>
+
             </androidx.appcompat.widget.LinearLayoutCompat>
 
             <androidx.appcompat.widget.LinearLayoutCompat
@@ -151,6 +182,24 @@
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/game_IMG_ast12"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    app:srcCompat="@drawable/asteroid"
+                    android:scaleType="fitCenter"/>
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/game_IMG_ast13"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    app:srcCompat="@drawable/asteroid"
+                    android:scaleType="fitCenter"/>
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/game_IMG_ast14"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -191,6 +240,24 @@
                     android:layout_marginStart="8dp"
                     app:srcCompat="@drawable/asteroid"
                     android:scaleType="fitCenter"/>
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/game_IMG_ast23"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    app:srcCompat="@drawable/asteroid"
+                    android:scaleType="fitCenter"/>
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/game_IMG_ast24"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    app:srcCompat="@drawable/asteroid"
+                    android:scaleType="fitCenter"/>
             </androidx.appcompat.widget.LinearLayoutCompat>
 
             <androidx.appcompat.widget.LinearLayoutCompat
@@ -219,6 +286,24 @@
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/game_IMG_ast32"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    app:srcCompat="@drawable/asteroid"
+                    android:scaleType="fitCenter"/>
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/game_IMG_ast33"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    app:srcCompat="@drawable/asteroid"
+                    android:scaleType="fitCenter"/>
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/game_IMG_ast34"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -261,6 +346,24 @@
                     app:srcCompat="@drawable/asteroid"
                     android:scaleType="fitCenter"/>
 
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/game_IMG_ast43"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    app:srcCompat="@drawable/asteroid"
+                    android:scaleType="fitCenter"/>
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/game_IMG_ast44"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    app:srcCompat="@drawable/asteroid"
+                    android:scaleType="fitCenter"/>
+
             </androidx.appcompat.widget.LinearLayoutCompat>
 
             <androidx.appcompat.widget.LinearLayoutCompat
@@ -289,6 +392,24 @@
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/game_IMG_ast52"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    app:srcCompat="@drawable/asteroid"
+                    android:scaleType="fitCenter"/>
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/game_IMG_ast53"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    app:srcCompat="@drawable/asteroid"
+                    android:scaleType="fitCenter"/>
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/game_IMG_ast54"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -360,6 +481,44 @@
                         android:layout_height="match_parent"
                         android:scaleType="fitCenter"
                         android:src="@drawable/asteroid"/>
+                </FrameLayout>
+
+                <FrameLayout
+                    android:id="@+id/game_LYO_astabovespace3"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent" >
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/game_IMG_spaceship63"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/spaceship_svgrepo_com" />
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/game_IMG_ast63"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/asteroid"/>
+                </FrameLayout>
+
+                <FrameLayout
+                    android:id="@+id/game_LYO_astabovespace4"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent" >
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/game_IMG_spaceship64"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/spaceship_svgrepo_com" />
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/game_IMG_ast64"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/asteroid"/>
                 </FrameLayout>
 
             </androidx.appcompat.widget.LinearLayoutCompat>

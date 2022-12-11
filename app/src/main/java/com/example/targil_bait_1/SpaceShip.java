@@ -3,9 +3,8 @@ package com.example.targil_bait_1;
 public class SpaceShip {
     private int currentPos;
 
-
     public SpaceShip() {
-        currentPos = 1;
+        currentPos = 2;
     }
 
     public int getCurrentPos() {
