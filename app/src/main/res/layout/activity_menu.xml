@@ -16,6 +16,7 @@
         android:scaleType="centerCrop" />
 
     <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/menu_LBL_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -24,13 +25,28 @@
         android:textColor="#EAE6E6"
         android:textSize="50sp"
 
-        android:textStyle="bold"></com.google.android.material.textview.MaterialTextView>
+        android:textStyle="bold">
+
+    </com.google.android.material.textview.MaterialTextView>
+
+    <EditText
+        android:id="@+id/menu_EDT_inputname"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/menu_LBL_title"
+        android:layout_alignStart="@id/menu_LBL_title"
+        android:background="#F4F4EF"
+        android:layout_marginTop="30dp"
+        android:hint="enter full name here"
+        android:inputType="text"
+        android:minHeight="48dp" />
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/menu_LYO_btns"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+        android:layout_marginTop="350dp"
+        android:layout_centerHorizontal="true"
         android:orientation="vertical">
 
         <com.google.android.material.button.MaterialButton

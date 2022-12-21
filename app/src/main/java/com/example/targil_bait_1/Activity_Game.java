@@ -3,17 +3,18 @@ package com.example.targil_bait_1;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageView;
 
-import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.VibrationEffect;
-import android.os.Vibrator;
 import android.view.View;
 import android.os.Handler;
-import android.widget.Toast;
+
 
 import com.bumptech.glide.Glide;
+import com.example.targil_bait_1.GameObjects.GameManager;
+import com.example.targil_bait_1.Sensors.StepDetector;
+import com.example.targil_bait_1.Sounds.CoinSound;
+import com.example.targil_bait_1.Sounds.CrashSound;
+import com.example.targil_bait_1.utils.MySignal;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.google.android.material.textview.MaterialTextView;
@@ -25,9 +26,11 @@ public class Activity_Game extends AppCompatActivity {
     private int seconds = 0;
     public final static String KEY_DELAY = "KEY_DELAY";
     public final static String KEY_MODE = "KEY_MODE";
+    public final static String KEY_NAME = "KEY_NAME";
     //private int delay;
     private boolean isSensorMode;
     private MaterialTextView score;
+    private String userName;
     private AppCompatImageView space_IMG_background;
     private ShapeableImageView[] game_IMG_hearts;
     private ShapeableImageView[][] game_IMG_matrix;
@@ -66,6 +69,7 @@ public class Activity_Game extends AppCompatActivity {
         Intent previousIntent = getIntent();
         gameManager.setDelay(previousIntent.getExtras().getInt(KEY_DELAY));
         isSensorMode = previousIntent.getExtras().getBoolean(KEY_MODE);
+        userName = previousIntent.getExtras().getString(KEY_NAME);
 
         Glide
                 .with(this)
@@ -105,12 +109,6 @@ public class Activity_Game extends AppCompatActivity {
                 score.setText("" + seconds);
             }
         };
-
-
- //       handlerAsteroidsDown.postDelayed(runnable, gameManager.getDelay()); // THIS FUNCTION CALLS THE run() METHOD
-
-
-
     }
 
     private void setButtons(boolean isSensorMode)
@@ -141,14 +139,16 @@ public class Activity_Game extends AppCompatActivity {
         game_IMG_space[4].setVisibility(View.INVISIBLE);
     }
 
-    public void setImage(int row, int col, int type){
+    public void setImage(int row, int col, int type)
+    {
         int imageID = getResources().getIdentifier(typeImage[type], "drawable", getPackageName());
         //gameManager.setMainTypeMatrix(row,col,type);// 0 == rock 1 == coins
         game_IMG_matrix[row][col].setImageResource(imageID);
         game_IMG_matrix[row][col].setTag(imageID);
     }
 
-    private void turnAllInvisible() {
+    private void turnAllInvisible()
+    {
         for (int i = 0; i < NUM_ROWS; i++) {
             for (int j = 0; j < NUM_COLS; j++) {
                 game_IMG_matrix[i][j].setVisibility(View.INVISIBLE);
@@ -157,7 +157,8 @@ public class Activity_Game extends AppCompatActivity {
     }
 
 
-    private void findViews() {
+    private void findViews()
+    {
         //football_IMG_background = findViewById(R.id.football_IMG_background);
 
         score = findViewById(R.id.game_LBL_score);
@@ -241,14 +242,15 @@ public class Activity_Game extends AppCompatActivity {
             {
                 crashSound = new CrashSound(this);
                 crashSound.execute();
-                vibrate();
+                MySignal.getInstance().vibrate();
+               // vibrate();
             }
             break;
             case 2:
             {
                 coinSound = new CoinSound(this);
                 coinSound.execute();
-                vibrate();
+ //               vibrate();
                 seconds += 9;
                 score.setText("" + seconds);
             }
@@ -257,8 +259,11 @@ public class Activity_Game extends AppCompatActivity {
                 break;
         }
         if (gameManager.isEndGame()) {
+            //REGISTER NEW USER IN LIST OF HISCORES
+            gameManager.registerUser(userName, seconds);
             //OPEN A TOAST MESSAGE AND RETURN TO MAIN MENU
-            gameManager.displayToast("Game Over, returning to menu", Toast.LENGTH_SHORT);
+            MySignal.getInstance().toastLong("Game Over, returning to menu");
+           // gameManager.displayToast("Game Over, returning to menu", Toast.LENGTH_SHORT);
             finish();
         } else {
             for (int i = 0; i < gameManager.getHits(); i++) {
@@ -284,16 +289,16 @@ public class Activity_Game extends AppCompatActivity {
         });
     }
 
-    private void vibrate() {
-        Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-        // Vibrate for 500 milliseconds
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            v.vibrate(VibrationEffect.createOneShot(500, VibrationEffect.DEFAULT_AMPLITUDE));
-        } else {
-            //deprecated in API 26
-            v.vibrate(500);
-        }
-    }
+//    private void vibrate() {
+//        Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+//        // Vibrate for 500 milliseconds
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+//            v.vibrate(VibrationEffect.createOneShot(500, VibrationEffect.DEFAULT_AMPLITUDE));
+//        } else {
+//            //deprecated in API 26
+//            v.vibrate(500);
+//        }
+//    }
 
     @Override
     protected void onResume() {
@@ -301,13 +306,15 @@ public class Activity_Game extends AppCompatActivity {
         handlerAsteroidsDown.postDelayed(runnable,gameManager.getDelay());
         stepDetector.startY();
         if (isSensorMode)
+        {
             stepDetector.startX();
+        }
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-
+        handlerAsteroidsDown.removeCallbacks(runnable);
     }
 
     @Override
