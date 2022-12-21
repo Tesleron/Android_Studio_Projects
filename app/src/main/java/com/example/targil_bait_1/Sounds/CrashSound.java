@@ -1,8 +1,10 @@
-package com.example.targil_bait_1;
+package com.example.targil_bait_1.Sounds;
 
 import android.content.Context;
 import android.media.MediaPlayer;
 import android.os.AsyncTask;
+
+import com.example.targil_bait_1.R;
 
 public class CrashSound extends AsyncTask<Void, Void, Void>{
 

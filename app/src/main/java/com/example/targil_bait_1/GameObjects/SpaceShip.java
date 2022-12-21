@@ -1,4 +1,4 @@
-package com.example.targil_bait_1;
+package com.example.targil_bait_1.GameObjects;
 
 public class SpaceShip {
     private int currentPos;

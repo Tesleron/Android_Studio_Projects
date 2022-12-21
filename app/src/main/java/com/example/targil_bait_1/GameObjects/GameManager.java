@@ -1,10 +1,14 @@
-package com.example.targil_bait_1;
+package com.example.targil_bait_1.GameObjects;
 
 import android.content.Context;
 import android.view.View;
-import android.widget.Toast;
 
+import com.example.targil_bait_1.Activity_Game;
+import com.example.targil_bait_1.DataBase.DataBase;
+import com.example.targil_bait_1.DataBase.User;
+import com.example.targil_bait_1.utils.MySPV;
 import com.google.android.material.imageview.ShapeableImageView;
+import com.google.gson.Gson;
 
 import java.util.Random;
 
@@ -134,10 +138,24 @@ public class GameManager {
         this.delay = delay;
     }
 
-    public void displayToast(String text, int length)
+//    public void displayToast(String text, int length)
+//    {
+//        Toast
+//                .makeText(context, text, length)
+//                .show();
+//    }
+
+    public void registerUser(String userName, int seconds)
     {
-        Toast
-                .makeText(context, text, length)
-                .show();
+        DataBase myDB;
+        String json = MySPV.getInstance().getStrSP("records","");
+        myDB = new Gson().fromJson(json, DataBase.class);
+        if(myDB == null)
+        {
+            myDB = new DataBase();
+        }
+        User rec = new User(userName, seconds); //createRecord(lon,lat);
+        myDB.getResults().add(rec);
+        MySPV.getInstance().putString("records", new Gson().toJson(myDB));
     }
 }

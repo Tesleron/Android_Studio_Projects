@@ -1,13 +1,13 @@
-package com.example.targil_bait_1;
+package com.example.targil_bait_1.Sensors;
 
 import android.content.Context;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
-import android.util.Log;
-import android.widget.Toast;
 
+import com.example.targil_bait_1.GameObjects.GameManager;
+import com.example.targil_bait_1.utils.MySignal;
 import com.google.android.material.imageview.ShapeableImageView;
 
 public class StepDetector
@@ -102,7 +102,8 @@ public class StepDetector
         if (y < 0.0)
         {
             gameManager.setDelay(500);
-            gameManager.displayToast("FAST MODE", Toast.LENGTH_SHORT);
+            MySignal.getInstance().toastShort("FAST MODE");
+           // gameManager.displayToast("FAST MODE", Toast.LENGTH_SHORT);
             if (System.currentTimeMillis() - timeStamp > 500) {
                 timeStamp = System.currentTimeMillis();
             }
@@ -111,7 +112,8 @@ public class StepDetector
         if (y > 9.0)
         {
             gameManager.setDelay(1000);
-            gameManager.displayToast("SLOW MODE", Toast.LENGTH_SHORT);
+            MySignal.getInstance().toastShort("SLOW MODE");
+          //  gameManager.displayToast("SLOW MODE", Toast.LENGTH_SHORT);
             if (System.currentTimeMillis() - timeStamp > 500) {
                 timeStamp = System.currentTimeMillis();
             }
