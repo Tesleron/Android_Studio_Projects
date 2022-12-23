@@ -138,13 +138,6 @@ public class GameManager {
         this.delay = delay;
     }
 
-//    public void displayToast(String text, int length)
-//    {
-//        Toast
-//                .makeText(context, text, length)
-//                .show();
-//    }
-
     public void registerUser(String userName, int seconds, double lat, double lon)
     {
         DataBase myDB;
