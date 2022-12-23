@@ -27,7 +27,10 @@ public class Activity_Game extends AppCompatActivity {
     public final static String KEY_DELAY = "KEY_DELAY";
     public final static String KEY_MODE = "KEY_MODE";
     public final static String KEY_NAME = "KEY_NAME";
-    //private int delay;
+    public static final String KEY_LON = "KEY_LON";
+    public static final String KEY_LAT = "KEY_LAT";
+    private double lat;
+    private double lon;
     private boolean isSensorMode;
     private MaterialTextView score;
     private String userName;
@@ -70,6 +73,8 @@ public class Activity_Game extends AppCompatActivity {
         gameManager.setDelay(previousIntent.getExtras().getInt(KEY_DELAY));
         isSensorMode = previousIntent.getExtras().getBoolean(KEY_MODE);
         userName = previousIntent.getExtras().getString(KEY_NAME);
+        lat = previousIntent.getExtras().getDouble(KEY_LAT);
+        lon = previousIntent.getExtras().getDouble(KEY_LON);
 
         Glide
                 .with(this)
@@ -260,7 +265,7 @@ public class Activity_Game extends AppCompatActivity {
         }
         if (gameManager.isEndGame()) {
             //REGISTER NEW USER IN LIST OF HISCORES
-            gameManager.registerUser(userName, seconds);
+            gameManager.registerUser(userName, seconds, lat, lon);
             //OPEN A TOAST MESSAGE AND RETURN TO MAIN MENU
             MySignal.getInstance().toastLong("Game Over, returning to menu");
            // gameManager.displayToast("Game Over, returning to menu", Toast.LENGTH_SHORT);

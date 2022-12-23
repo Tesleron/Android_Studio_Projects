@@ -145,7 +145,7 @@ public class GameManager {
 //                .show();
 //    }
 
-    public void registerUser(String userName, int seconds)
+    public void registerUser(String userName, int seconds, double lat, double lon)
     {
         DataBase myDB;
         String json = MySPV.getInstance().getStrSP("records","");
@@ -154,7 +154,7 @@ public class GameManager {
         {
             myDB = new DataBase();
         }
-        User rec = new User(userName, seconds); //createRecord(lon,lat);
+        User rec = new User(userName, seconds, lat, lon); //createRecord(lon,lat);
         myDB.getResults().add(rec);
         MySPV.getInstance().putString("records", new Gson().toJson(myDB));
     }

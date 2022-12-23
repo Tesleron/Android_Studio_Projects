@@ -42,11 +42,11 @@ public class User {
         return this;
     }
 
-    public User(String name, int score) {
+    public User(String name, int score, double lat, double lon) {
         this.name = name;
         this.score = score;
-        lat = 0.0;
-        lon = 0.0;
+        setLat(lat);
+        setLon(lon);
     }
 
     @Override

@@ -113,7 +113,8 @@ public class Activity_Menu extends AppCompatActivity {
             intent.putExtra(Activity_Game.KEY_DELAY, delay);
             intent.putExtra(Activity_Game.KEY_MODE, isSensorMode);
             intent.putExtra(Activity_Game.KEY_NAME, menu_EDT_inputname.getText().toString());
-
+            intent.putExtra(Activity_Game.KEY_LAT, lat);
+            intent.putExtra(Activity_Game.KEY_LON, lon);
 
             startActivity(intent);
         }
