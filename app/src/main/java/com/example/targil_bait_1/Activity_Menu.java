@@ -2,8 +2,12 @@ package com.example.targil_bait_1;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageView;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -14,6 +18,8 @@ import com.bumptech.glide.Glide;
 import com.example.targil_bait_1.utils.MySignal;
 import com.google.android.material.button.MaterialButton;
 
+import im.delight.android.location.SimpleLocation;
+
 public class Activity_Menu extends AppCompatActivity {
     private AppCompatImageView space_IMG_background;
     private MaterialButton menu_BTN_2btnslw;
@@ -21,12 +27,19 @@ public class Activity_Menu extends AppCompatActivity {
     private MaterialButton menu_BTN_snsr;
     private MaterialButton menu_BTN_topten;
     private EditText menu_EDT_inputname;
+    private double lat;
+    private double lon;
+    public static SimpleLocation location;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+
+        lat = 0.0;
+        lon = 0.0;
+        location = new SimpleLocation(this);
 
         findViews();
         initButtons();
@@ -35,6 +48,8 @@ public class Activity_Menu extends AppCompatActivity {
                 .with(this)
                 .load(R.drawable.starfield6)
                 .into(space_IMG_background);
+
+        requestLocationPermissionFromUser(location);
 
     }
 
@@ -98,6 +113,8 @@ public class Activity_Menu extends AppCompatActivity {
             intent.putExtra(Activity_Game.KEY_DELAY, delay);
             intent.putExtra(Activity_Game.KEY_MODE, isSensorMode);
             intent.putExtra(Activity_Game.KEY_NAME, menu_EDT_inputname.getText().toString());
+
+
             startActivity(intent);
         }
         else
@@ -149,6 +166,23 @@ public class Activity_Menu extends AppCompatActivity {
         menu_BTN_2btnslw.setClickable(isEnabled);
         menu_BTN_snsr.setClickable(isEnabled);
 
+    }
+
+    private void requestLocationPermissionFromUser(SimpleLocation location) {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
+                && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 101);
+            putLatLonOnMap(location);
+        }
+        else{
+            putLatLonOnMap(location);
+        }
+    }
+
+    private void putLatLonOnMap(SimpleLocation location){
+        location.beginUpdates();
+        this.lat = location.getLatitude();
+        this.lon = location.getLongitude();
     }
 
 
